@@ -15,11 +15,27 @@ gem 'figaro'
 gem 'rolify'
 gem 'sendgrid'
 gem 'simple_form', '>= 3.0.0.rc'
+
+gem 'prawn' # PDF
+gem 'ransack' # Search
+gem 'font-awesome-rails' # Fonts
+gem 'fullcalendar-rails' # Calendar
+gem 'jquery-ui-rails'
+gem 'oj'
+gem 'bootstrap-datetimepicker-rails'
+gem 'dalli'
+gem 'activerecord-postgres-hstore'
+gem 'backbone-on-rails'
+gem 'friendly_id', '5.0.0.beta4'
+gem 'paper_trail', :git => "git@github.com:airblade/paper_trail.git"
+gem 'stamp'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'hub', :require=>nil
   gem 'quiet_assets'
+  gem 'pg'
 end
 group :development, :test do
   gem 'factory_girl_rails'

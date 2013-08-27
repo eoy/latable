@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @restaurant.phone %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @restaurant.contact %>
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Starts at</th>
+      <th>Ends at</th>
+      <th>Person count</th>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Special wishes</th>
+      <th>Added by</th>
+      <th>Updated by</th>
+      <th>Canceled by</th>
+      <th>Canceled on</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurant.reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.starts_at.stamp("20:00 - May 25") %></td>
+        <td><%= reservation.ends_at.stamp("20:00 - May 25") %></td>
+        <td><%= reservation.person_count %></td>
+        <td><%= reservation.email %></td>
+        <td><%= reservation.name %></td>
+        <td><%= reservation.phone %></td>
+        <td><%= reservation.special_wishes %></td>
+        <td><%= link_to reservation.user_name, user_path(reservation.added_by) %></td>
+        <td><%= link_to "Uppdaterare", user_path(reservation.originator) %></td>
+        <td><%= link_to "Avbokare", user_path(reservation.canceled_by) %></td>
+        <td><%= reservation.canceled_at %></td>
+        <td><%= link_to 'Show', restaurant_reservation_path(@restaurant, reservation) %></td>
+        <td><%= link_to 'Edit', edit_restaurant_reservation_path(@restaurant, reservation) %></td>
+        <td><%= link_to 'Cancel', cancel_reservation_restaurant_reservation_path(@restaurant, reservation), method: :post, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reservation', new_restaurant_reservation_path(@restaurant) %>
+
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Starts at:</strong>
+  <%= @reservation.starts_at %>
+</p>
+
+<p>
+  <strong>Ends at:</strong>
+  <%= @reservation.ends_at %>
+</p>
+
+<p>
+  <strong>Person count:</strong>
+  <%= @reservation.person_count %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @reservation.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @reservation.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @reservation.phone %>
+</p>
+
+<p>
+  <strong>Special wishes:</strong>
+  <%= @reservation.special_wishes %>
+</p>
+
+<p>
+  <strong>Added by:</strong>
+  <%= @reservation.added_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @reservation.updated_by %>
+</p>
+
+<p>
+  <strong>Canceled by:</strong>
+  <%= @reservation.canceled_by %>
+</p>
+
+<p>
+  <strong>Canceled on:</strong>
+  <%= @reservation.canceled_on %>
+</p>
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>

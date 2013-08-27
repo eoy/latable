@@ -1,0 +1,33 @@
+<%= simple_form_for([@restaurant, @reservation]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :starts_at do %>
+      <div id="datetimepicker1" class="input-append date">
+        <%= f.text_field :starts_at, 'data-format' => "dd/MM/yyyy hh:mm:ss", :id => "datetimepicker1" %>
+        <span class="add-on">
+          <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+          </i>
+        </span>
+      </div>
+    <% end %>
+    <%= f.input :ends_at %>
+    <%= f.input :person_count %>
+    <%= f.input :email %>
+    <%= f.input :name %>
+    <%= f.input :phone %>
+    <%= f.input :special_wishes %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker1').datetimepicker({
+      language: 'pt-BR'
+    });
+  });
+</script>

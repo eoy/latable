@@ -1,0 +1,47 @@
+<h1>Listing reservations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Starts at</th>
+      <th>Ends at</th>
+      <th>Person count</th>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Special wishes</th>
+      <th>Added by</th>
+      <th>Updated by</th>
+      <th>Canceled by</th>
+      <th>Canceled on</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.starts_at %></td>
+        <td><%= reservation.ends_at %></td>
+        <td><%= reservation.person_count %></td>
+        <td><%= reservation.email %></td>
+        <td><%= reservation.name %></td>
+        <td><%= reservation.phone %></td>
+        <td><%= reservation.special_wishes %></td>
+        <td><%= link_to reservation.added_by.name, user_path(reservation.added_by) %></td>
+        <td><%= reservation.updated_by %></td>
+        <td><%= reservation.canceled_by %></td>
+        <td><%= reservation.canceled_on %></td>
+        <td><%= link_to 'Show', reservation %></td>
+        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
+        <td><%= link_to 'Cancel', restaurant_reservation_cancel_path, method: :post, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reservation', new_reservation_path %>

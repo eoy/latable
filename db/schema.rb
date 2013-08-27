@@ -11,7 +11,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130827094902) do
+ActiveRecord::Schema.define(version: 20130827124750) do
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "reservations", force: true do |t|
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.integer  "person_count"
+    t.string   "email"
+    t.string   "name"
+    t.string   "phone"
+    t.text     "special_wishes"
+    t.integer  "added_by"
+    t.integer  "updated_by"
+    t.integer  "canceled_by"
+    t.datetime "canceled_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "restaurant_id"
+  end
+
+  add_index "reservations", ["restaurant_id"], name: "index_reservations_on_restaurant_id"
+
+  create_table "restaurant_users", force: true do |t|
+    t.integer "user_id"
+    t.integer "restaurant_id"
+  end
+
+  add_index "restaurant_users", ["restaurant_id"], name: "index_restaurant_users_on_restaurant_id"
+  add_index "restaurant_users", ["user_id"], name: "index_restaurant_users_on_user_id"
+
+  create_table "restaurants", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
+
+  add_index "restaurants", ["slug"], name: "index_restaurants_on_slug", unique: true
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -49,5 +101,16 @@ ActiveRecord::Schema.define(version: 20130827094902) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end

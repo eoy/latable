@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 242c2b48b49bf4fb8d4303fa08e68da1b7aa132e
+  specs:
+    anjlab-bootstrap-rails (3.0.0.2)
+      railties (>= 3.0)
+      sass (>= 3.2)
+
+GIT
   remote: git@github.com:airblade/paper_trail.git
   revision: b4e53f861a58ef46c698c42f0ec044535b100c3b
   specs:
@@ -53,8 +61,6 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-datetimepicker-rails (0.0.11)
-    bootstrap-sass (2.3.2.1)
-      sass (~> 3.2)
     builder (3.1.4)
     cancan (1.6.10)
     capybara (2.1.0)
@@ -235,11 +241,11 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgres-hstore
+  anjlab-bootstrap-rails!
   backbone-on-rails
   better_errors
   binding_of_caller
   bootstrap-datetimepicker-rails
-  bootstrap-sass
   cancan
   capybara
   coffee-rails (~> 4.0.0)

@@ -1,4 +1,22 @@
+$border-radius-base: 0px;
+$jumbotron-padding: 0px;
+$panel-border-radius: 0px;
+$well-bg: #3b3e40;
+$navbar-inverse-bg: #3b3e40;
+
 @import "twitter/bootstrap";
 @import "bootstrap-datetimepicker";
-body { padding-top: 60px; }
+// body { padding-top: 60px; }
+.navbar {
+	margin-bottom: 0px;
+}
 // @import "bootstrap-responsive";
+
+.col-lg-2.well {
+	position: absolute;
+	height: 100%;
+}
+
+.col-lg-10 {
+	margin-left: 16%;
+}
